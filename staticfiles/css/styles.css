@@ -1,0 +1,17 @@
+body {
+    background-color: #f9fdf9;
+    font-family: "Underdog", system-ui, sans-serif;
+}
+
+.navbar {
+    background: linear-gradient(to right, #4CAF50, #2e7d32);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+footer {
+    font-size: 0.9rem;
+    opacity: 0.75;
+}

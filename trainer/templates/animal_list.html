@@ -1,0 +1,18 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}Список животных{% endblock %}
+{% block page-lead %}Найдено {{ animals|length }} животных{% endblock %}
+
+{% block content %}
+<div class="list-group">
+    {% for animal in animals %}
+        <div class="list-group-item">
+            <strong>{{ animal.name }}</strong> —
+            <em>{{ animal.animal_class.name }}</em><br>
+            {{ animal.description|default:"(без описания)" }}
+        </div>
+    {% empty %}
+        <div class="alert alert-warning">Нет животных в базе данных.</div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!-- trainer/templates/base_page.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block pagetitle %}Главная{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Underdog&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light rounded px-4 mt-3 mb-4">
+    <a class="navbar-brand" href="/">🐾 Латинский для зоологов</a>
+</nav>
+
+        </nav>
+
+        {% block content %}
+        <h1>Привет!</h1>
+        {% endblock %}
+
+        <footer class="mt-5 border-top pt-3 text-muted small">
+            © 2025 Латинский для зоологов — учебный проект
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Латинский для зоологов
+{% endblock %}
+
+{% block page-lead %}
+Добро пожаловать в обучающий проект для изучения латинских названий животных по классам (млекопитающие, птицы, рептилии и другие).
+{% endblock %}
+
+{% block content %}
+<div class="container px-4 py-5" id="project-contents">
+    <h2 class="pb-2 border-bottom">Что есть в этом проекте</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="col d-flex">
+            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#book"></use>
+                </svg>
+            </div>
+            <div>
+                <h3 class="fs-2">Список животных</h3>
+                <p>Страница, на которой представлен список животных с их латинскими названиями и принадлежностью к классу (например, млекопитающие, птицы).</p>
+                <a href="{% url 'animals-list' %}" class="btn btn-primary">Посмотреть</a>
+            </div>
+        </div>
+        <div class="col d-flex">
+            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#plus-circle"></use>
+                </svg>
+            </div>
+            <div>
+                <h3 class="fs-2">Добавить животное</h3>
+                <p>Форма, с помощью которой вы можете добавить новое животное в базу: указать его русское и латинское название, выбрать класс.</p>
+                <a href="{% url 'add-animal' %}" class="btn btn-primary">Добавить</a>
+            </div>
+        </div>
+        <div class="col d-flex">
+            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#bar-chart"></use>
+                </svg>
+            </div>
+            <div>
+                <h3 class="fs-2">Статистика</h3>
+                <p>Общая статистика: сколько видов добавлено, какие классы представлены, какие латинские названия самые длинные.</p>
+                <a href="{% url 'statistics' %}" class="btn btn-primary">Смотреть</a>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="pb-2 border-bottom">Что можете сделать вы?</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col-lg-4">
+            <h4 class="py-1">Добавить собственную форму</h4>
+        </div>
+        <div class="col-lg-8">
+            <p>Например, вы можете реализовать форму для теста: показывается латинское название, и нужно выбрать русское (или наоборот).</p>
+        </div>
+    </div>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col-lg-4">
+            <h4 class="py-1">Обогатить контент</h4>
+        </div>
+        <div class="col-lg-8">
+            <p>Добавьте описание животных, изображения, ссылки на источники — это поможет зоологам лучше запоминать названия.</p>
+        </div>
+    </div>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col-lg-4">
+            <h4 class="py-1">Сделать красивее</h4>
+        </div>
+        <div class="col-lg-8">
+            <p>Измените стили, добавьте картинки, иконки классов животных, или даже сделайте адаптацию под мобильные устройства.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
