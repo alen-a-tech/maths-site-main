@@ -10,5 +10,6 @@ urlpatterns = [
     path('add-term/', views.add_term, name='add-animal'),        # ➕
     path('send-term/', views.send_term, name='send-term'),       # 📤
     path('stats/', views.show_stats, name='statistics'),         # 📊
+    path('test/', views.test_view, name='test'),
     path('admin/', admin.site.urls),
 ]

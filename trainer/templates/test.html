@@ -1,0 +1,29 @@
+{% extends "base_page.html" %}
+{% load custom_filters %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Тест: Угадай класс животного</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for animal in animals %}
+      <div class="mb-3">
+        <label><strong>{{ animal.name }}</strong></label>
+        <select name="class_{{ animal.id }}" class="form-select">
+          {% for cls in animal_classes %}
+            <option value="{{ cls.id }}">{{ cls.name }}</option>
+          {% endfor %}
+        </select>
+
+        {% if results %}
+          {% if results|get_item:animal.id %}
+            <p class="text-success">✅ Верно</p>
+          {% else %}
+            <p class="text-danger">❌ Неверно. Правильный класс: {{ animal.animal_class.name }}</p>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Проверить</button>
+  </form>
+</div>
+{% endblock %}

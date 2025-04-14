@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.core.cache import cache
-from trainer.models import Animal
+from trainer.models import Animal, AnimalClass
 from . import terms_work
 
 
@@ -31,23 +31,46 @@ def send_term(request):
         new_term = request.POST.get("new_term", "")
         new_definition = request.POST.get("new_definition", "").replace(";", ",")
         context = {"user": user_name}
-        if len(new_definition) == 0:
+
+        if not new_definition:
             context["success"] = False
             context["comment"] = "Описание должно быть не пустым"
-        elif len(new_term) == 0:
+        elif not new_term:
             context["success"] = False
             context["comment"] = "Термин должен быть не пустым"
         else:
             context["success"] = True
             context["comment"] = "Ваш термин принят"
             terms_work.write_term(new_term, new_definition)
-        if context["success"]:
+
+        if context.get("success"):
             context["success-title"] = ""
+
         return render(request, "term_request.html", context)
-    else:
-        return add_term(request)
+
+    return add_term(request)
 
 
 def show_stats(request):
     stats = terms_work.get_terms_stats()
     return render(request, "stats.html", stats)
+
+
+# 🔥 Новая страница — тест на определение класса животного
+def test_view(request):
+    animals = Animal.objects.all()[:5]
+    animal_classes = AnimalClass.objects.all()
+    results = {}
+
+    if request.method == "POST":
+        for animal in animals:
+            user_class_id = request.POST.get(f'class_{animal.id}')
+            if user_class_id:
+                correct = str(animal.animal_class.id) == user_class_id
+                results[animal.id] = correct
+
+    return render(request, "test.html", {
+        "animals": animals,
+        "animal_classes": animal_classes,
+        "results": results if request.method == "POST" else None
+    })
